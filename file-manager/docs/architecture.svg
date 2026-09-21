@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">File encryption and management architecture</title>
+<desc id="desc">Browser crosses TLS boundary to trusted application. Encryption happens in application memory. Restricted database and private storage are separate persistence boundaries.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" fill="#486277"/></marker></defs><rect width="1200" height="820" fill="#f6f8fb"/>
+<text x="38" y="45" font-family="Arial,sans-serif" font-size="14" fill="#5c7487" font-weight="bold">ICS0027 / CHECKPOINT 1</text>
+<text x="38" y="85" font-family="Arial,sans-serif" font-size="30" fill="#183449" font-weight="bold">File encryption and management</text>
+<text x="38" y="115" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">Planned architecture • encryption in server memory • dedicated service per project</text>
+<rect x="35" y="160" width="270" height="290" rx="12" fill="#eef3f8" stroke="#9db1c2" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="55" y="192" font-family="Arial,sans-serif" font-size="15" fill="#183449" font-weight="bold">CLIENT ENVIRONMENT</text>
+<rect x="55" y="220" width="230" height="165" rx="12" fill="#ffffff" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="74" y="255" font-family="Arial,sans-serif" font-size="23" fill="#183449" font-weight="bold">Browser</text>
+<text x="74" y="290" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">Untrusted request fields</text>
+<text x="74" y="318" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">Plaintext upload/download</text>
+<text x="74" y="346" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">No authorization authority</text>
+<text x="55" y="424" font-family="Arial,sans-serif" font-size="15" fill="#183449" font-weight="normal">TB1: public network / TLS</text>
+<rect x="365" y="160" width="450" height="470" rx="12" fill="#e9f4f0" stroke="#9db1c2" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="385" y="192" font-family="Arial,sans-serif" font-size="15" fill="#183449" font-weight="bold">TRUSTED APPLICATION HOST</text>
+<rect x="395" y="220" width="390" height="70" rx="12" fill="#ffffff" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="420" y="250" font-family="Arial,sans-serif" font-size="21" fill="#183449" font-weight="bold">Caddy / HTTPS termination</text>
+<text x="420" y="276" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">TLS 1.2 or 1.3; certificate renewal</text>
+<rect x="395" y="345" width="390" height="90" rx="12" fill="#ffffff" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="420" y="378" font-family="Arial,sans-serif" font-size="23" fill="#183449" font-weight="bold">Django application</text>
+<text x="420" y="407" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">Session • CSRF • ownership • validation</text>
+<path d="M590 292 L590 343" fill="none" stroke="#486277" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="608" y="324" font-family="Arial,sans-serif" font-size="14" fill="#183449" font-weight="normal">Loopback only</text>
+<rect x="395" y="490" width="390" height="110" rx="12" fill="#d8eee5" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="420" y="525" font-family="Arial,sans-serif" font-size="21" fill="#183449" font-weight="bold">Encryption in request memory</text>
+<text x="420" y="555" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">AES-256-GCM + DEK wrapping</text>
+<text x="420" y="581" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">Plaintext is visible to the server</text>
+<path d="M590 437 L590 488" fill="none" stroke="#486277" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<path d="M286 255 L393 255" fill="none" stroke="#486277" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="314" y="240" font-family="Arial,sans-serif" font-size="13" fill="#183449" font-weight="normal">HTTPS</text>
+<rect x="855" y="160" width="310" height="470" rx="12" fill="#f7eee1" stroke="#9db1c2" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="875" y="192" font-family="Arial,sans-serif" font-size="14" fill="#183449" font-weight="bold">TB2: PRIVATE PERSISTENCE</text>
+<rect x="875" y="255" width="270" height="150" rx="12" fill="#ffffff" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="895" y="290" font-family="Arial,sans-serif" font-size="22" fill="#183449" font-weight="bold">SQLite database</text>
+<text x="895" y="323" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">Accounts and sessions</text>
+<text x="895" y="350" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">File metadata + wrapped DEKs</text>
+<text x="895" y="377" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">No plaintext files or KEKs</text>
+<path d="M787 390 L873 390" fill="none" stroke="#486277" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<rect x="875" y="480" width="270" height="100" rx="12" fill="#ffffff" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="895" y="515" font-family="Arial,sans-serif" font-size="21" fill="#183449" font-weight="bold">Private file storage</text>
+<text x="895" y="545" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">Ciphertext only; no web route</text>
+<path d="M787 545 L873 545" fill="none" stroke="#486277" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<rect x="35" y="490" width="270" height="140" rx="12" fill="#ece8f5" stroke="#9db1c2" stroke-width="1.5" stroke-dasharray="7 5"/>
+<text x="55" y="520" font-family="Arial,sans-serif" font-size="14" fill="#183449" font-weight="bold">TB3: RESTRICTED KEY STORE</text>
+<text x="55" y="551" font-family="Arial,sans-serif" font-size="21" fill="#183449" font-weight="bold">Versioned KEKs</text>
+<text x="55" y="581" font-family="Arial,sans-serif" font-size="16" fill="#183449" font-weight="normal">Separate from data backups</text>
+<text x="55" y="607" font-family="Arial,sans-serif" font-size="15" fill="#183449" font-weight="normal">Service identity access only</text>
+<path d="M307 545 L393 545" fill="none" stroke="#486277" stroke-width="2" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<rect x="35" y="665" width="1130" height="117" rx="12" fill="#ffffff" stroke="#9db1c2" stroke-width="1.5"/>
+<text x="55" y="695" font-family="Arial,sans-serif" font-size="14" fill="#183449" font-weight="bold">TRUST LIMITS</text>
+<text x="55" y="724" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">Server-side encryption protects stored data under the stated key assumptions; it is not end-to-end encryption.</text>
+<text x="55" y="752" font-family="Arial,sans-serif" font-size="17" fill="#183449" font-weight="normal">A compromised application or user device can expose plaintext. Arrows show request/response or read/write flow.</text>
+</svg>
