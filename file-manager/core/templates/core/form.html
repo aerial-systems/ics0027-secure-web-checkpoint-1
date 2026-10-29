@@ -1,0 +1,1 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>{{ title }}</title><body><h1>{{ title }}</h1><form method="post"{% if multipart %} enctype="multipart/form-data"{% endif %}>{% csrf_token %}{{ form.as_p }}<button>Continue</button></form><a href="{% url 'files' %}">My files</a></body></html>

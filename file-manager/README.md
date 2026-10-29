@@ -4,7 +4,7 @@
 
 [Design document](docs/DESIGN.md) · [Architecture diagram](docs/architecture.svg) · [Acceptance tests](../docs/ACCEPTANCE.md)
 
-Only `/` and `/health/` work (GET and HEAD). Login and encryption are planned; the routes below return 404.
+Core registration, login, sessions, encrypted file operations and quotas now work in a local checkpoint 2 draft. See [progress, verification and limitations](docs/PROGRESS.md). No deployment or new submission has been made.
 
 ## Local run
 
@@ -15,12 +15,13 @@ python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements.txt
 python file-manager/manage.py migrate
+python file-manager/manage.py init_file_key
 python file-manager/manage.py runserver 127.0.0.1:8000
 ```
 
-Open <http://127.0.0.1:8000/>. SQLite stores its database here; Git ignores it. The development signing secret changes on restart. Export `DJANGO_SECRET_KEY` to keep sessions between restarts when login is added.
+Open <http://127.0.0.1:8000/>. SQLite stores its database here; Git ignores it. The development signing secret changes on restart. Export `DJANGO_SECRET_KEY` to keep sessions between restarts for the implemented login.
 
-## Planned routes and features
+## Routes and features
 
 | Method | Route | Purpose |
 | --- | --- | --- |
@@ -42,7 +43,7 @@ python file-manager/manage.py check
 python file-manager/manage.py test core
 ```
 
-Tests cover the starter. See [test results](../docs/VERIFICATION.md) and the [planned security tests](../docs/ACCEPTANCE.md).
+40 tests cover the file manager. See [test results](../docs/VERIFICATION.md) and the [planned security tests](../docs/ACCEPTANCE.md).
 
 ## Deployment plan
 

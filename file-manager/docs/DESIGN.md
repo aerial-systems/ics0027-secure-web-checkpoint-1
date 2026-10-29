@@ -1,6 +1,6 @@
 # Secure Web-Based File Encryption and Management System
 
-Checkpoint 1: threat model and architecture.
+Checkpoint 1: threat model and architecture, retained as submitted history. The current implementation differs in its storage layout; see [local progress](PROGRESS.md) for implemented controls and remaining gaps.
 
 ## Scope
 

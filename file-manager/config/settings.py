@@ -89,3 +89,21 @@ if PRODUCTION and os.environ.get("TRUST_TLS_PROXY") == "1":
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 USE_TZ = True
 TIME_ZONE = "UTC"
+
+LOGIN_URL = "/auth/login/"
+MAX_FILE_BYTES = 10 * 1024 * 1024
+USER_QUOTA_BYTES = 100 * 1024 * 1024
+FILE_KEY_PATH = os.environ.get(
+    "FILE_KEY_PATH", str(BASE_DIR / "private-storage" / "master.key")
+)
+FILE_UPLOAD_HANDLERS = ["core.uploads.BoundedUploadHandler"]
+DATA_UPLOAD_MAX_MEMORY_SIZE = 11 * 1024 * 1024
+DATA_UPLOAD_MAX_NUMBER_FILES = 1
+MIDDLEWARE.insert(1, "core.middleware.RequestLimitMiddleware")
+MIDDLEWARE.insert(
+    MIDDLEWARE.index("django.contrib.auth.middleware.AuthenticationMiddleware") + 1,
+    "core.middleware.SessionLifetimeMiddleware",
+)
+if os.environ.get("DEV_TLS") == "1":
+    SESSION_COOKIE_SECURE = CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True

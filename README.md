@@ -1,4 +1,4 @@
-# ICS0027 - Secure web applications, Checkpoint 1
+# ICS0027 - Secure web applications
 
 Week 4 designs and starter code for a file encryption system and a password manager.
 
@@ -11,9 +11,7 @@ Each design covers the architecture, OWASP Top 10:2025 threats, encryption and s
 
 ## Status
 
-Both Django apps have a home page, `/health/`, SQLite setup, security headers, CSRF middleware and tests. Password hashing uses Argon2id. Each app has its own cookie names and production settings.
-
-Login, file and vault operations, key management, rate limits, audit logs and custom session timeouts are not implemented yet. Do not use real secrets with these starters.
+The submitted checkpoint 1 design remains in the repository. A local checkpoint 2 draft now implements the file manager's core flows. See [progress and limitations](file-manager/docs/PROGRESS.md). The password manager remains a starter. Do not use real secrets with either app.
 
 ## Run locally
 
@@ -25,6 +23,7 @@ python3 -m venv .venv
 python -m pip install -r requirements.txt
 python file-manager/manage.py migrate
 python password-manager/manage.py migrate
+python file-manager/manage.py init_file_key
 python file-manager/manage.py runserver 127.0.0.1:8000
 ```
 
@@ -49,4 +48,4 @@ Versions are pinned in `requirements.txt`. Direct dependencies are listed in `re
 
 ## Submission
 
-Upload [submission.txt](submission.txt) to the course portal. It contains the public repository URL for both assignments. Lecture materials are cited but not included.
+[submission.txt](submission.txt) records the repository already submitted for checkpoint 1. Checkpoint 2 adds the file manager implementation and tests. Publishing the repository does not submit the Moodle assignment. Lecture materials are cited but not included.

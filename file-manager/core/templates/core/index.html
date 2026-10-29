@@ -1,17 +1,1 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <main>
-        <h1>{{ title }}</h1>
-        <p>ICS0027 - Checkpoint 1: threat model and architecture.</p>
-        <p>This starter has a home page and a health endpoint. The design is in the repository.</p>
-        <p>Login and encryption are not implemented yet. Do not use real files or passwords.</p>
-        <p><a href="/health/">Application health</a></p>
-    </main>
-</body>
-</html>
+<!doctype html><html lang="en"><meta charset="utf-8"><title>{{ title }}</title><body><h1>{{ title }}</h1><p>Local checkpoint 2 draft. Do not store real sensitive files.</p><p><a href="{% url 'register' %}">Create account</a> <a href="{% url 'login' %}">Sign in</a> <a href="{% url 'files' %}">My files</a></p></body></html>
